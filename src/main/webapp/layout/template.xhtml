@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<title>Lorin Gao Test Project!</title>
+		</f:facet>		
+		<link type="text/css" rel="stylesheet"	href="#{request.contextPath}/stylesheet/default.css" />
+		<ui:insert name="head"></ui:insert>
+		<script type="text/javascript">  $(function() {$('.sidebar a').hover(function() {$(this).toggleClass('ui-state-hover');})}); </script>
+	</h:head>
+	<h:body>
+		<div id="container">
+		
+			<div id="header" class="ui-widget ui-widget-header">
+				<div id="logo">	<img src="#{request.contextPath}/img/logo.png" alt="logo" /></div>
+					
+				<div id="menu" class="ui-widget"> <h:form> 	<ui:include src="../layout/globalMenu.xhtml" />	</h:form> </div>
+			</div>
+		
+			<div id="main" class="ui-widget">
+				<div id="sidebar" class="ui-widget-content ui-corner-bottom ui-helper-clearfix ui-shadow">
+					<h:form><ui:include src="../layout/featureMenu.xhtml" /></h:form>
+				</div>
+	
+				<div id="content">	<div class="post"><ui:insert name="content">THis is content</ui:insert>	</div></div>
+			</div>
+			
+			<div id="footer">Powered by Boseeda!!! 	</div>
+		</div>			
+	</h:body>
+</f:view>
+</html>

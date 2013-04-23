@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/layout/template.xhtml">
+				
+	<ui:define name="content">
+	
+		
+		<h:form id="form">			
+
+			<h3>Create User form, this form is to create a user by below information:</h3>  
+			<p:separator id="separatorTitle"/> 
+	
+				<p:panel header="User Details" style="margin-top:10px">
+				<h:panelGrid id="detail" columns="2" styleClass="grid"
+					columnClasses="label,value">
+					<h:outputText value="Login Name *" />
+					<h:inputText id="Name"
+						value="#{accessUserBean.accessUser.userName}" required="true" />
+
+					<h:outputText value="First Name *" />
+					<h:inputText id="First"
+						value="#{accessUserBean.accessUser.firstName}" />
+
+					<h:outputText value="LastName *" />
+					<h:inputText id="LastName"
+						value="#{accessUserBean.accessUser.lastName}" />
+				</h:panelGrid>		
+
+			</p:panel>
+			<h3>Please press below button to save or cancel:</h3>  
+			<p:separator id="separatorFoot"/> 
+			<h:panelGroup>
+			<p:commandButton value="Save" action="#{accessUserBean.update}" ajax="false" />
+			<p:commandButton value="Cancel" action="search.xhtml?faces-redirect=true" ajax="false" />
+			</h:panelGroup>
+		</h:form>  
+	</ui:define>
+
+</ui:composition>

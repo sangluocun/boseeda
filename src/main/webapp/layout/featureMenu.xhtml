@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:panelMenu >
+		<p:submenu label="Access Management" >
+			<p:menuitem value="User Management" ajax="false" outcome="/accessUser/search.xhtml" icon="ui-icon-close" />
+			<p:menuitem value="Role" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Privilege" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Resource" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Operation" ajax="false" icon="ui-icon-close" />
+		</p:submenu>
+		<p:submenu label="WorkOrder Management" icon="ui-icon-extlink">
+			<p:menuitem value="Work Order" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Work Order Sequence" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Delete" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Delete" ajax="false" icon="ui-icon-close" />
+			<p:menuitem value="Delete" ajax="false" icon="ui-icon-close" />
+		</p:submenu>
+		<p:separator />
+
+	</p:panelMenu>
+</ui:composition>

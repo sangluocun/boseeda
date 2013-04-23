@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/layout/template.xhtml">
+				
+	<ui:define name="content">	
+		
+		<h:form id="form">			
+
+			<p>User management module is to handle the access user, access group, access role relation.</p>
+	
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<p:commandButton value="New" action="create.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-document" />
+					<p:separator />
+					<p:commandButton value="Modify" action="create.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-comment" />
+					<p:separator />
+					<p:commandButton value="Delete" action="create.xhtml?faces-redirect=true" ajax="false" icon="ui-icon-trash" />
+				</p:toolbarGroup>	
+				<p:toolbarGroup align="right">
+					<p:commandButton value="Help" action="create.xhtml?faces-redirect=true" ajax="false"  icon="ui-icon-help" />
+				</p:toolbarGroup>	
+			</p:toolbar>
+
+			<p>All of user info as following:</p>
+			
+
+	                <p:dataTable var="au" value="#{accessUserBean.lazyModel}" paginator="true" rows="10"
+	                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	                             rowsPerPageTemplate="5,10,15" lazy="true">
+			  
+			        <p:column headerText="User Name" >  
+			            <h:outputText value="#{au.userName}" />  
+			        </p:column>  
+			
+			        <p:column headerText="First Name">  
+			            <h:outputText value="#{au.firstName}" />  
+			        </p:column> 
+			
+			        <p:column headerText="Last Name">  
+			            <h:outputText value="#{au.lastName}" />  
+			        </p:column> 	
+							
+			    </p:dataTable>  
+
+		    
+		    <p>The selcted user info as following:</p>
+
+
+			
+
+
+		</h:form>  
+	</ui:define>
+
+</ui:composition>
