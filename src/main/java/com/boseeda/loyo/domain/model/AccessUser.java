@@ -17,7 +17,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.boseeda.loyo.domain.AuditableEntity;
+import com.boseeda.loyo.domain.AccessTrackedEntity;
 
 /**
  * Users can log in and can operate the system.
@@ -28,8 +28,8 @@ import com.boseeda.loyo.domain.AuditableEntity;
 @Entity
 @Table(name = "access_user")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User
-    extends AuditableEntity
+public class AccessUser
+    extends AccessTrackedEntity
 {
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,8 @@ public class User
 
     private String locale = Locale.getDefault().toString();
 
-    private List<Role> roles = new ArrayList<Role>();
+    @ManyToMany
+    private List<AccessRole> roles = new ArrayList<AccessRole>();
 
     /**
      * Returns the user name, used to log into the system. The username
@@ -149,10 +150,9 @@ public class User
     /**
      * @return Returns the roles.
      */
-    @ManyToMany
-    public List<Role> getRoles() {
+    public List<AccessRole> getRoles() {
         if (this.roles == null) {
-            this.roles = new ArrayList<Role>();
+            this.roles = new ArrayList<AccessRole>();
         }
         return this.roles;
     }
@@ -160,7 +160,7 @@ public class User
     /**
      * @param roles The roles to set.
      */
-    public void setRoles(List<Role> roles) {
+    public void setRoles(List<AccessRole> roles) {
         this.roles = roles;
     }
 
@@ -171,21 +171,16 @@ public class User
      * @return true if user has role
      */
     public boolean hasRole(String name) {
-        for (Role r: getRoles()) {
+        for (AccessRole r: getRoles()) {
             if (r.getName().equals(name))
                 return true;
         }
         return false;
     }
 
-    /**
-     * Tests whether user has de.mywms.model.Role
-     * 
-     * @param role
-     * @return true if user has role
-     */
-    public boolean hasRole(com.boseeda.loyo.domain.model.Role role) {
-        for (Role r: getRoles()) {
+
+    public boolean hasRole(AccessRole role) {
+        for (AccessRole r: getRoles()) {
             if (r.equals(role))
                 return true;
         }

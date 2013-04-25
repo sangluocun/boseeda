@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2006 by Fraunhofer IML, Dortmund.
- * All rights reserved.
- *
- * Project: myWMS
- */
 package com.boseeda.loyo.domain.model;
 
 import javax.persistence.Column;
@@ -12,7 +6,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import com.boseeda.loyo.domain.AuditableEntity;
+import com.boseeda.loyo.domain.AccessTrackedEntity;
 
 /**
  * The role enables user to operate specific processes. 
@@ -20,8 +14,8 @@ import com.boseeda.loyo.domain.AuditableEntity;
 @Entity
 @Table(name = "access_role")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Role
-    extends AuditableEntity
+public class AccessRole
+    extends AccessTrackedEntity
 {
     private static final long serialVersionUID = 1L;
 

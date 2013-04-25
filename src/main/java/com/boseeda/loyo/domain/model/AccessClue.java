@@ -1,4 +1,4 @@
-package com.boseeda.loyo.domain;
+package com.boseeda.loyo.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,20 +7,21 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.boseeda.loyo.domain.IdEntity;
+
 /**
- * Client contains informations about the access client
+ * Client contains informations about the access clue
  */
 @Entity
-@Table(name = "access_client")
+@Table(name = "access_clue")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class AuditLog
+public class AccessClue
     extends IdEntity
 {
     private static final long serialVersionUID = 1L;
 
     private String name = null;
 
-    private String number = null;
     
     private String code = "";
 
@@ -34,27 +35,8 @@ public class AuditLog
 
 	private String ip ="";
 	
-	private String invokerMethod = "";
+	private String invokerMethod = "";   
     
-    /**
-     * Creates a new instance of Client.
-     */
-    public AuditLog() {
-        super();
-    }
-
-    /**
-     * Creates a new instance of Client. This constructor must not be
-     * used except of the system client.
-     * 
-     * @param id the id of the new client; for use of the system client
-     *            only!
-     */
-    public AuditLog(long id) {
-        super();
-        setId(id);
-    }
-
     /**
      * @return Returns the name.
      */
@@ -68,21 +50,6 @@ public class AuditLog
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * @return Returns the number.
-     */
-    @Column(nullable = false, unique = true, name="cl_nr")
-    public String getNumber() {
-        return this.number;
-    }
-
-    /**
-     * @param number The number to set.
-     */
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     @Column(unique = true, name="cl_code")
@@ -141,10 +108,6 @@ public class AuditLog
         this.fax = fax;
     }
 
-    @Override
-    public String toUniqueString() {
-        return getNumber();
-    }
 
     @Transient
     public boolean isSystemClient() {
